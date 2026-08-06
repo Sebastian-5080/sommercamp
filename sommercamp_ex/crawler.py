@@ -4,27 +4,22 @@ from scrapy import Spider, Request
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 from scrapy.http.response.html import HtmlResponse
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
-
-
 
 class SchoolSpider(Spider):
     # Gib hier dem Crawler einen eindeutigen Name,
     # der beschreibt, was du crawlst.
-    name = "school"
+    name = "Senna"
 
     start_urls = [
         # Gib hier mindestens eine (oder mehrere) URLs an,
         # bei denen der Crawler anfangen soll,
         # Seiten zu downloaden.
-        "https://wilhelm-gym.de/",
+        "https://www.overtake.gg/",
     ]
     link_extractor = LxmlLinkExtractor(
         # Beschränke den Crawler, nur Links zu verfolgen,
         # die auf eine der gelisteten Domains verweisen.
-        allow_domains=["wilhelm-gym.de"],
+        allow_domains=["www.overtake.gg"],
     )
     custom_settings = {
         # Identifiziere den Crawler gegenüber den gecrawlten Seiten.
@@ -32,7 +27,7 @@ class SchoolSpider(Spider):
         # Der Crawler soll nur Seiten crawlen, die das auch erlauben.
         "ROBOTSTXT_OBEY": True,
         # Frage zu jeder Zeit höchstens 4 Webseiten gleichzeitig an.
-        "CONCURRENT_REQUESTS": 1,
+        "CONCURRENT_REQUESTS": 4,
         # Verlangsame den Crawler, wenn Webseiten angeben,
         # dass sie zu oft angefragt werden.
         "AUTOTHROTTLE_ENABLED": True,
@@ -43,16 +38,9 @@ class SchoolSpider(Spider):
 
     def parse(self, response):
         if not isinstance(response, HtmlResponse):
-            driver = webdriver.Firefox();
-            driver.get("start_url");
-            "docno": str(hash(response.url));
-            "url": response.url;
-            "title": response.css("title::text").get();
-            "text": extract_plain_text(response.text, main_content=True);
-            driver.close()
+            # Die Webseite ist keine HTML-Webseite, enthält also keinen Text.
             return
         
-        # Speichere die Webseite als ein Dokument in unserer Dokumentensammlung.
         yield {
             # Eine eindeutige Identifikations-Nummer für das Dokument.
             "docno": str(hash(response.url)),
