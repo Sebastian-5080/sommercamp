@@ -58,14 +58,12 @@ def app(index_dir) -> None:
         pipeline_02 = searcher >> text_getter >> model.scorer()
 
         # Führe die Such-Pipeline aus und suche nach der Suchanfrage.
-        results_01 = pipeline_01.search(query).sort()
+        results_01 = pipeline_01.search(query)
 
         # Beschränkng der KI
-        query_02 = results_01.get()
+        index_02 = None
 
-        print(query_02.shape)
-
-        results_02 = pipeline_02.search(query_02)
+        results_02 = pipeline_02.search(query)
 
         # Zeige eine Unter-Überschrift vor den Suchergebnissen an.
         divider()
