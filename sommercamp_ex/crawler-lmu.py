@@ -72,4 +72,4 @@ class SchoolSpider(Spider):
                 # Ignoriere Links ohne Linktext, z.B. bei Bildern.
                 continue
             # Für jeden gefundenen Link, stelle eine Anfrage zum Crawling.
-            yield Request(link.url, callback=self.parse)
+            yield ReVquest(link.url, callback=self.parse)
