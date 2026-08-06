@@ -1,0 +1,46 @@
+scrapy runspider sommercamp/sommercamp_ex/crawler-lmu.py --output data/test-doc.jsonl >> sommercamp/data/tmp.txt 
+2026-08-06 09:33:45 [scrapy.utils.log] INFO: Scrapy 2.17.0 started (bot: scrapybot)
+2026-08-06 09:33:45 [scrapy.utils.log] INFO: Versions:
+{'lxml': '6.1.1',
+ 'libxml2': '2.14.6',
+ 'cssselect': '1.5.0',
+ 'parsel': '1.11.0',
+ 'w3lib': '2.4.1',
+ 'Twisted': '26.4.0',
+ 'Python': '3.11.4 (main, Jun  7 2023, 18:32:58) [GCC 10.2.1 20210110]',
+ 'pyOpenSSL': '26.4.0 (OpenSSL 4.0.1 9 Jun 2026)',
+ 'cryptography': '50.0.0',
+ 'Platform': 'Linux-6.8.0-1052-azure-x86_64-with-glibc2.31'}
+2026-08-06 09:33:45 [scrapy.crawler] DEBUG: Using AsyncCrawlerProcess
+2026-08-06 09:33:45 [asyncio] DEBUG: Using selector: EpollSelector
+Traceback (most recent call last):
+  File "/usr/local/bin/scrapy", line 8, in <module>
+    sys.exit(execute())
+             ^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scrapy/cmdline.py", line 214, in execute
+    _run_print_help(parser, _run_command, cmd, args, opts)
+  File "/usr/local/lib/python3.11/site-packages/scrapy/cmdline.py", line 160, in _run_print_help
+    func(*a, **kw)
+  File "/usr/local/lib/python3.11/site-packages/scrapy/cmdline.py", line 222, in _run_command
+    cmd.run(args, opts)
+  File "/usr/local/lib/python3.11/site-packages/scrapy/commands/runspider.py", line 53, in run
+    module = _import_file(filename)
+             ^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/site-packages/scrapy/commands/runspider.py", line 26, in _import_file
+    module = import_module(abspath.stem)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.11/importlib/__init__.py", line 126, in import_module
+    return _bootstrap._gcd_import(name[level:], package, level)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<frozen importlib._bootstrap>", line 1204, in _gcd_import
+  File "<frozen importlib._bootstrap>", line 1176, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1147, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 690, in _load_unlocked
+  File "<frozen importlib._bootstrap_external>", line 936, in exec_module
+  File "<frozen importlib._bootstrap_external>", line 1074, in get_code
+  File "<frozen importlib._bootstrap_external>", line 1004, in source_to_code
+  File "<frozen importlib._bootstrap>", line 241, in _call_with_frames_removed
+  File "/workspaces/sommercamp/sommercamp_ex/crawler-lmu.py", line 49
+    "docno": str(hash(response.url));
+    ^^^^^^^
+SyntaxError: illegal target for annotation
