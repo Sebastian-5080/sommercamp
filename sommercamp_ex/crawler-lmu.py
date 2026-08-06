@@ -5,14 +5,15 @@ from scrapy import Spider, Request
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
 from scrapy.http.response.html import HtmlResponse
 
-from selenium import webdriver
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.common.by import By
+#from selenium import webdriver
+#from selenium.webdriver.common.keys import Keys
+#from selenium.webdriver.common.by import By
 
 import time
 from scrapy import signals
 from selenium import webdriver
 from selenium.webdriver.firefox.options import Options
+
 
 class SeleniumMiddleware:
     def __init__(self):
