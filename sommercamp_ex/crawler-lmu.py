@@ -9,10 +9,43 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
 
+import time
+from scrapy import signals
+from selenium import webdriver
+from selneium.webdriver.chrome.options import Option
 
+class SeleniumMiddleware:
+    def __init__(self):
+        opt = Options()
+        opts.add_argument("--healess=new")
+        opts.add_argument("--no-sandbox")
+        opts.add_argument("--disable-dev-shm-usage")
+        self.driver = webdriver.Firefox(options=opt)
+
+        @classmethod
+        def from_crawler(cls, crawler):
+            mw = cls()
+            crawler.signals.connect(mw.spider_closed, signal=signals.spider_closed)
+            return mw
+
+        def process_request(self, request, spider):
+            if request.url.endswith("/robots.txt"):
+                return None
+
+            self.driver.get(request.url)
+            time.sleep(2)
+            return HtmlResponse(
+                url=self.driver.current_url,
+                body=self.driver.page_source,
+                encoding="utf-8",
+                request=request,
+            )
+        
+        def spider_closed(self):
+            self.driver.quit()
 
 class SchoolSpider(Spider):
-    # Gib hier dem Crawler einen eindeutigen Name,
+    # Gib hier dem ſCrawler einen eindeutigen Name,
     # der beschreibt, was du crawlst.
     name = "school"
 
@@ -39,8 +72,8 @@ class SchoolSpider(Spider):
         "AUTOTHROTTLE_ENABLED": True,
         "AUTOTHROTTLE_TARGET_CONCURRENCY": 1,
         # Frage nicht zwei mal die selbe Seite an.
-        "HTTPCACHE_ENABLED": True,
-    }
+        "HTTPCACHE_ENABLED": False,
+        "DOWNLOADER_MIDDLEWARES": {SeleniumMiddleware: 543},
 
     def parse(self, response):
         if not isinstance(response, HtmlResponse):
