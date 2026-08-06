@@ -17,7 +17,7 @@ from selenium.webdriver.firefox.options import Options
 class SeleniumMiddleware:
     def __init__(self):
         opts = Options()
-        opts.add_argument("--healess=new")
+        opts.add_argument("--headless=new")
         self.driver = webdriver.Firefox(options=opts)
 
     @classmethod
@@ -104,4 +104,4 @@ class SchoolSpider(Spider):
                 # Ignoriere Links ohne Linktext, z.B. bei Bildern.
                 continue
             # Für jeden gefundenen Link, stelle eine Anfrage zum Crawling.
-            yield ReVquest(link.url, callback=self.parse)
+            yield Request(link.url, callback=self.parse)
