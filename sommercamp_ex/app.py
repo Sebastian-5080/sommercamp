@@ -7,6 +7,10 @@ from pyterrier import IndexFactory
 from pyterrier.terrier import Retriever
 from pyterrier.text import get_text
 
+import pyterrier as pt
+import pyterrier_t5
+
+
 
 # Diese Funktion baut die App für die Suche im gegebenen Index auf.
 def app(index_dir) -> None:
@@ -18,15 +22,15 @@ def app(index_dir) -> None:
     )
 
     # Gib der App einen Titel und eine Kurzbeschreibung:
-    title("Formel-Suchmaschine")
-    markdown("Hier kannst du unsere neue Formel-Suchmaschine nutzen:")
+    title("Sim Racing-Suchmaschine")
+    markdown("Hier kannst du unsere neue Sim Racing-Suchmaschine nutzen:")
 
     # Erstelle ein Text-Feld, mit dem die Suchanfrage (query)
     # eingegeben werden kann.
     query = text_input(
         label="Suchanfrage",
         placeholder="Suche...",
-        value="Formula 1",
+        value="",
     )
 
     # Wenn die Suchanfrage leer ist, dann kannst du nichts suchen.
@@ -86,7 +90,7 @@ def main():
 
     # Wenn es noch keinen Index gibt, kannst du die Suchmaschine nicht starten.
     if not exists(index_dir):
-        exit(1)er.py data/index/ "Test Informatik
+        exit(1);er.py ;data/index/ "Test Informatik"
 
     # Rufe die App-Funktion von oben auf.
     app(index_dir)
