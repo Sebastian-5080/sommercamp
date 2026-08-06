@@ -1,6 +1,6 @@
-scrapy runspider sommercamp/sommercamp_ex/crawler-lmu.py --output sommercamp/data/doc-lmu.jsonl
-2026-08-06 10:05:06 [scrapy.utils.log] INFO: Scrapy 2.17.0 started (bot: scrapybot)
-2026-08-06 10:05:06 [scrapy.utils.log] INFO: Versions:
+@Sebastian-5080 ➜ /workspaces $ scrapy runspider sommercamp/sommercamp_ex/crawler-lmu.py --output sommercamp/data/doc-lmu.jsonl
+2026-08-06 10:10:38 [scrapy.utils.log] INFO: Scrapy 2.17.0 started (bot: scrapybot)
+2026-08-06 10:10:38 [scrapy.utils.log] INFO: Versions:
 {'lxml': '6.1.1',
  'libxml2': '2.14.6',
  'cssselect': '1.5.0',
@@ -11,14 +11,14 @@ scrapy runspider sommercamp/sommercamp_ex/crawler-lmu.py --output sommercamp/dat
  'pyOpenSSL': '26.4.0 (OpenSSL 4.0.1 9 Jun 2026)',
  'cryptography': '50.0.0',
  'Platform': 'Linux-6.8.0-1052-azure-x86_64-with-glibc2.31'}
-2026-08-06 10:05:06 [scrapy.crawler] DEBUG: Using AsyncCrawlerProcess
-2026-08-06 10:05:06 [asyncio] DEBUG: Using selector: EpollSelector
-2026-08-06 10:05:07 [scrapy.addons] INFO: Enabled addons:
+2026-08-06 10:10:38 [scrapy.crawler] DEBUG: Using AsyncCrawlerProcess
+2026-08-06 10:10:38 [asyncio] DEBUG: Using selector: EpollSelector
+2026-08-06 10:10:38 [scrapy.addons] INFO: Enabled addons:
 []
-2026-08-06 10:05:07 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.asyncioreactor.AsyncioSelectorReactor
-2026-08-06 10:05:07 [scrapy.utils.log] DEBUG: Using asyncio event loop: asyncio.unix_events._UnixSelectorEventLoop
-2026-08-06 10:05:07 [scrapy.extensions.telnet] INFO: Telnet Password: 8764877312f802c5
-2026-08-06 10:05:07 [scrapy.middleware] INFO: Enabled extensions:
+2026-08-06 10:10:38 [scrapy.utils.log] DEBUG: Using reactor: twisted.internet.asyncioreactor.AsyncioSelectorReactor
+2026-08-06 10:10:38 [scrapy.utils.log] DEBUG: Using asyncio event loop: asyncio.unix_events._UnixSelectorEventLoop
+2026-08-06 10:10:38 [scrapy.extensions.telnet] INFO: Telnet Password: 30eb62aa543792fc
+2026-08-06 10:10:38 [scrapy.middleware] INFO: Enabled extensions:
 ['scrapy.extensions.corestats.CoreStats',
  'scrapy.extensions.logcount.LogCount',
  'scrapy.extensions.telnet.TelnetConsole',
@@ -26,23 +26,23 @@ scrapy runspider sommercamp/sommercamp_ex/crawler-lmu.py --output sommercamp/dat
  'scrapy.extensions.feedexport.FeedExporter',
  'scrapy.extensions.logstats.LogStats',
  'scrapy.extensions.throttle.AutoThrottle']
-2026-08-06 10:05:07 [scrapy.crawler] INFO: Overridden settings:
+2026-08-06 10:10:38 [scrapy.crawler] INFO: Overridden settings:
 {'AUTOTHROTTLE_ENABLED': True,
  'CONCURRENT_REQUESTS': 1,
  'ROBOTSTXT_OBEY': True,
  'SPIDER_LOADER_CLASS': <class 'scrapy.spiderloader.DummySpiderLoader'>,
  'USER_AGENT': 'Sommercamp (https://uni-jena.de)'}
-2026-08-06 10:05:07 [selenium.webdriver.common.selenium_manager] DEBUG: Selenium Manager binary found at: /usr/local/lib/python3.11/site-packages/selenium/webdriver/common/linux/selenium-manager
-2026-08-06 10:05:07 [selenium.webdriver.common.selenium_manager] DEBUG: Executing process: /usr/local/lib/python3.11/site-packages/selenium/webdriver/common/linux/selenium-manager --browser firefox --language-binding python --output json
-2026-08-06 10:05:17 [selenium.webdriver.common.selenium_manager] DEBUG: Driver path: /root/.cache/selenium/geckodriver/linux64/0.37.1/geckodriver
-2026-08-06 10:05:17 [selenium.webdriver.common.selenium_manager] DEBUG: Browser path: /root/.cache/selenium/firefox/linux64/153.0.3/firefox
-2026-08-06 10:05:17 [selenium.webdriver.common.service] DEBUG: Started executable: `/root/.cache/selenium/geckodriver/linux64/0.37.1/geckodriver` in a child process with pid: 43379 using 0 to output -3
-2026-08-06 10:05:18 [selenium.webdriver.remote.remote_connection] DEBUG: POST http://localhost:46341/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'firefox', 'acceptInsecureCerts': True, 'moz:debuggerAddress': True, 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'moz:firefoxOptions': {'binary': '/root/.cache/selenium/firefox/linux64/153.0.3/firefox', 'prefs': {'remote.active-protocols': 1}, 'args': ['--healess=new']}}}}
-2026-08-06 10:05:18 [urllib3.connectionpool] DEBUG: Starting new HTTP connection (1): localhost:46341
-2026-08-06 10:05:19 [urllib3.connectionpool] DEBUG: http://localhost:46341 "POST /session HTTP/1.1" 500 0
-2026-08-06 10:05:19 [selenium.webdriver.remote.remote_connection] DEBUG: Remote response: status=500 | data={"value":{"error":"unknown error","message":"Process (pid=43382) unexpectedly closed with status 255","stacktrace":""}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '119', 'date': 'Thu, 06 Aug 2026 10:05:18 GMT'})
-2026-08-06 10:05:19 [selenium.webdriver.remote.remote_connection] DEBUG: Finished Request
-2026-08-06 10:05:19 [asyncio] ERROR: Task exception was never retrieved
+2026-08-06 10:10:38 [selenium.webdriver.common.selenium_manager] DEBUG: Selenium Manager binary found at: /usr/local/lib/python3.11/site-packages/selenium/webdriver/common/linux/selenium-manager
+2026-08-06 10:10:38 [selenium.webdriver.common.selenium_manager] DEBUG: Executing process: /usr/local/lib/python3.11/site-packages/selenium/webdriver/common/linux/selenium-manager --browser firefox --language-binding python --output json
+2026-08-06 10:10:38 [selenium.webdriver.common.selenium_manager] DEBUG: Driver path: /root/.cache/selenium/geckodriver/linux64/0.37.1/geckodriver
+2026-08-06 10:10:38 [selenium.webdriver.common.selenium_manager] DEBUG: Browser path: /root/.cache/selenium/firefox/linux64/153.0.3/firefox
+2026-08-06 10:10:38 [selenium.webdriver.common.service] DEBUG: Started executable: `/root/.cache/selenium/geckodriver/linux64/0.37.1/geckodriver` in a child process with pid: 45607 using 0 to output -3
+2026-08-06 10:10:38 [selenium.webdriver.remote.remote_connection] DEBUG: POST http://localhost:49909/session {'capabilities': {'firstMatch': [{}], 'alwaysMatch': {'browserName': 'firefox', 'acceptInsecureCerts': True, 'moz:debuggerAddress': True, 'pageLoadStrategy': <PageLoadStrategy.normal: 'normal'>, 'browserVersion': None, 'moz:firefoxOptions': {'binary': '/root/.cache/selenium/firefox/linux64/153.0.3/firefox', 'prefs': {'remote.active-protocols': 1}, 'args': ['--headless=new']}}}}
+2026-08-06 10:10:38 [urllib3.connectionpool] DEBUG: Starting new HTTP connection (1): localhost:49909
+2026-08-06 10:10:38 [urllib3.connectionpool] DEBUG: http://localhost:49909 "POST /session HTTP/1.1" 500 0
+2026-08-06 10:10:38 [selenium.webdriver.remote.remote_connection] DEBUG: Remote response: status=500 | data={"value":{"error":"unknown error","message":"Process (pid=45610) unexpectedly closed with status 255","stacktrace":""}} | headers=HTTPHeaderDict({'content-type': 'application/json; charset=utf-8', 'cache-control': 'no-cache', 'content-length': '119', 'date': 'Thu, 06 Aug 2026 10:10:38 GMT'})
+2026-08-06 10:10:38 [selenium.webdriver.remote.remote_connection] DEBUG: Finished Request
+2026-08-06 10:10:38 [asyncio] ERROR: Task exception was never retrieved
 future: <Task finished name='Task-1' coro=<AsyncCrawlerRunner._crawl_and_track() done, defined at /usr/local/lib/python3.11/site-packages/scrapy/crawler.py:576> exception=WebDriverException()>
 Traceback (most recent call last):
   File "/usr/local/lib/python3.11/site-packages/scrapy/crawler.py", line 580, in _crawl_and_track
@@ -83,4 +83,6 @@ Traceback (most recent call last):
     self.error_handler.check_response(response)
   File "/usr/local/lib/python3.11/site-packages/selenium/webdriver/remote/errorhandler.py", line 232, in check_response
     raise exception_class(message, screen, stacktrace)
-selenium.common.exceptions.WebDriverException: Message: Process (pid=43382) unexpectedly closed with status 255
+selenium.common.exceptions.WebDriverException: Message: Process (pid=45610) unexpectedly closed with status 255
+
+@Sebastian-5080 ➜ /workspaces $ 
