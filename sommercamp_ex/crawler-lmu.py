@@ -74,6 +74,7 @@ class SchoolSpider(Spider):
         # Frage nicht zwei mal die selbe Seite an.
         "HTTPCACHE_ENABLED": False,
         "DOWNLOADER_MIDDLEWARES": {SeleniumMiddleware: 543},
+    }
 
     def parse(self, response):
         if not isinstance(response, HtmlResponse):
