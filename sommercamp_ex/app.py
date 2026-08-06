@@ -86,7 +86,7 @@ def main():
 
     # Wenn es noch keinen Index gibt, kannst du die Suchmaschine nicht starten.
     if not exists(index_dir):
-        exit(1)
+        exit(1)er.py data/index/ "Test Informatik
 
     # Rufe die App-Funktion von oben auf.
     app(index_dir)
