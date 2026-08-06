@@ -1,5 +1,0 @@
-@Sebastian-5080 ➜ /workspaces $ ~/.cache/selenium/firefox/linux64/153.0.3/firefox --headless --version
-[57012] Sandbox: CanCreateUserNamespace() clone() failure: EPERM
-XPCOMGlueLoad error for file /root/.cache/selenium/firefox/linux64/153.0.3/libmozgtk.so:
-libgtk-3.so.0: cannot open shared object file: No such file or directory
-Couldn't load XPCOM.
