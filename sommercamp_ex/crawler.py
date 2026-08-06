@@ -14,12 +14,12 @@ class SchoolSpider(Spider):
         # Gib hier mindestens eine (oder mehrere) URLs an,
         # bei denen der Crawler anfangen soll,
         # Seiten zu downloaden.
-        "https://community.lemansultimate.com/index.php",
+        "https://www.overtake.gg/",
     ]
     link_extractor = LxmlLinkExtractor(
         # Beschränke den Crawler, nur Links zu verfolgen,
         # die auf eine der gelisteten Domains verweisen.
-        allow_domains=["community.lemansultimate.com],
+        allow_domains=["www.overtake.gg"],
     )
     custom_settings = {
         # Identifiziere den Crawler gegenüber den gecrawlten Seiten.
@@ -40,7 +40,7 @@ class SchoolSpider(Spider):
         if not isinstance(response, HtmlResponse):
             # Die Webseite ist keine HTML-Webseite, enthält also keinen Text.
             return
-        
+
         yield {
             # Eine eindeutige Identifikations-Nummer für das Dokument.
             "docno": str(hash(response.url)),
