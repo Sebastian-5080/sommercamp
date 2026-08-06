@@ -20,12 +20,12 @@ class SchoolSpider(Spider):
         # Gib hier mindestens eine (oder mehrere) URLs an,
         # bei denen der Crawler anfangen soll,
         # Seiten zu downloaden.
-        "https://wilhelm-gym.de/",
+        "https://community.lemansultimate.com/index.php",
     ]
     link_extractor = LxmlLinkExtractor(
         # Beschränke den Crawler, nur Links zu verfolgen,
         # die auf eine der gelisteten Domains verweisen.
-        allow_domains=["wilhelm-gym.de"],
+        allow_domains=["community.lemansultimate.com"],
     )
     custom_settings = {
         # Identifiziere den Crawler gegenüber den gecrawlten Seiten.
@@ -46,7 +46,7 @@ class SchoolSpider(Spider):
         if not isinstance(response, HtmlResponse):
             driver = webdriver.Firefox();
             driver.get("start_url");
-            "docno": hashlib.md5(response.url.encode()).hexdigest();
+            "docno": str(hash(response.url));
             "url": response.url;
             "title": response.css("title::text").get();
             "text": extract_plain_text(response.text, main_content=True);

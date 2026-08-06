@@ -14,12 +14,12 @@ class SchoolSpider(Spider):
         # Gib hier mindestens eine (oder mehrere) URLs an,
         # bei denen der Crawler anfangen soll,
         # Seiten zu downloaden.
-        "https://www.overtake.gg/",
+        "https://community.lemansultimate.com/index.php",
     ]
     link_extractor = LxmlLinkExtractor(
         # Beschränke den Crawler, nur Links zu verfolgen,
         # die auf eine der gelisteten Domains verweisen.
-        allow_domains=["www.overtake.gg"],
+        allow_domains=["community.lemansultimate.com],
     )
     custom_settings = {
         # Identifiziere den Crawler gegenüber den gecrawlten Seiten.
