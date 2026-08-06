@@ -1,15 +1,14 @@
 # Hier importieren wir die benötigten Softwarebibliotheken.
 from os.path import abspath, exists
 from sys import argv
-from streamlit import (text_input, header, title, subheader,
-    container, markdown, link_button, divider, set_page_config)
+from streamlit import (text_input, header, title, subheader, container, 
+                       markdown, link_button, divider, set_page_config)
 from pyterrier import IndexFactory
 from pyterrier.terrier import Retriever
 from pyterrier.text import get_text
 
 import pyterrier as pt
-import pyterrier_t5
-
+import pyterrier_dr
 
 
 # Diese Funktion baut die App für die Suche im gegebenen Index auf.
@@ -48,8 +47,11 @@ def app(index_dir) -> None:
     )
     # Initialisiere das Modul, zum Abrufen der Texte.
     text_getter = get_text(index, metadata=["url", "title", "text"])
+    # Dense retriver Model laden
+    model = pyterrier_dr.SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2') 
     # Baue die Such-Pipeline zusammen.
-    pipeline = searcher >> text_getter
+    pipeline = searcher >> text_getter >> model.scorer()
+
     # Führe die Such-Pipeline aus und suche nach der Suchanfrage.
     results = pipeline.search(query)
 
@@ -90,7 +92,7 @@ def main():
 
     # Wenn es noch keinen Index gibt, kannst du die Suchmaschine nicht starten.
     if not exists(index_dir):
-        exit(1);er.py ;data/index/ "Test Informatik"
+        exit(1)
 
     # Rufe die App-Funktion von oben auf.
     app(index_dir)
