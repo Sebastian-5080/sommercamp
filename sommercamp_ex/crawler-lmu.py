@@ -12,14 +12,12 @@ from selenium.webdriver.common.by import By
 import time
 from scrapy import signals
 from selenium import webdriver
-from selneium.webdriver.firefox.options import Options
+from selenium.webdriver.firefox.options import Options
 
 class SeleniumMiddleware:
     def __init__(self):
         opts = Options()
         opts.add_argument("--healess=new")
-        opts.add_argument("--no-sandbox")
-        opts.add_argument("--disable-dev-shm-usage")
         self.driver = webdriver.Firefox(options=opts)
 
     @classmethod
@@ -58,7 +56,7 @@ class SchoolSpider(Spider):
     link_extractor = LxmlLinkExtractor(
         # Beschränke den Crawler, nur Links zu verfolgen,
         # die auf eine der gelisteten Domains verweisen.
-        allow_domains=["community.lemansultimate.com"],
+        allow_domains=["community.lemansultimate.com"]
     )
     custom_settings = {
         # Identifiziere den Crawler gegenüber den gecrawlten Seiten.
