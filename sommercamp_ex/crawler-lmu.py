@@ -1,4 +1,5 @@
 # Hier importieren wir die benötigten Softwarebibliotheken.
+import hashlib
 from resiliparse.extract.html2text import extract_plain_text
 from scrapy import Spider, Request
 from scrapy.linkextractors.lxmlhtml import LxmlLinkExtractor
@@ -45,7 +46,7 @@ class SchoolSpider(Spider):
         if not isinstance(response, HtmlResponse):
             driver = webdriver.Firefox();
             driver.get("start_url");
-            "docno": str(response.url);
+            "docno": hashlib.md5(response.url.encode()).hexdigest();
             "url": response.url;
             "title": response.css("title::text").get();
             "text": extract_plain_text(response.text, main_content=True);
