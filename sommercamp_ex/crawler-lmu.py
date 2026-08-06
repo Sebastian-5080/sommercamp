@@ -12,14 +12,16 @@ from scrapy.http.response.html import HtmlResponse
 import time
 from scrapy import signals
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options
+from selenium.webdriver.chrome.options import Options
 
 
 class SeleniumMiddleware:
     def __init__(self):
         opts = Options()
         opts.add_argument("--headless=new")
-        self.driver = webdriver.Firefox(options=opts)
+        opts.add_argument("--no-sandbox")
+        opts.add_argument("--disable-dev-shm-usage")
+        self.driver = webdriver.Chrome(options=opts)
 
     @classmethod
     def from_crawler(cls, crawler):
