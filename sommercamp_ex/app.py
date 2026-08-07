@@ -47,14 +47,15 @@ def app(index_dir) -> None:
         searcher = Retriever(
             index,
             wmodel="BM25",
-            num_results=10,
+            num_results=128,
         )
         # Initialisiere das Modul, zum Abrufen der Texte.
         text_getter = get_text(index, metadata=["url", "title", "text"])
         # Dense retriver Model laden
         model = pyterrier_dr.SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2') 
         # Baue die Such-Pipeline zusammen.
-        pipeline = searcher >> text_getter >> model.scorer()
+        pipeline = searcher >> text_getter
+        pipeline = (pipeline % 5 >> model.scorer()) ^ pipeline
 
         # Führe die Such-Pipeline aus und suche nach der Suchanfrage.
         results = pipeline.search(query)
