@@ -8,11 +8,17 @@ from pyterrier import IndexFactory
 from pyterrier.terrier import Retriever
 from pyterrier.text import get_text
 
-import pyterrier
-import pyterrier_dr
+from pyterrier_dr import SBertBiEncoder
 
 import json
 from streamlit_lottie import st_lottie
+
+if "Label" not in st.session_state:
+    st.session_state.Label = "AI Mode: "
+
+def change_label_session_state(label: str):
+    st.session_state.Label = f"AI Mode: {label}"
+
 
 # Diese Funktion baut die App für die Suche im gegebenen Index auf.
 def app(index_dir) -> None:
@@ -42,8 +48,11 @@ def app(index_dir) -> None:
     lottie_ai = load_lottie("data/animations/ai animation Flow 1.json")
 
     with st.container():
+
         on = st.toggle("Activate AI-Mode")
         if on:
+            action = st.menu_button(st.session_state.Label, options=["Lite 6.4", "Pro 12.8"])
+            change_label_session_state(action)
             st.write("AI-Mode aktiviert")
             st_lottie(
                 lottie_ai,
@@ -52,8 +61,7 @@ def app(index_dir) -> None:
                 height=200,
                 key="ai_mode"
             )
-            action = st.menu_button("Ai-Model", options=["Lite 6.4", "Pro 12.8"])
-
+            
     # Wenn die Suchanfrage leer ist, dann kannst du nichts suchen.
     if query == "":
         markdown("Bitte gib eine Suchanfrage ein.")
@@ -72,9 +80,9 @@ def app(index_dir) -> None:
             # Initialisiere das Modul, zum Abrufen der Texte.
             text_getter = get_text(index, metadata=["url", "title", "text"])
             # Dense retriver Model laden
-            model = pyterrier_dr.SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2')
+            model = SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2')
             pipeline = searcher >> text_getter
-            pipeline = (pipeline % 5 >> model.scorer()) ^ pipeline
+            pipeline = (pipeline % 8 >> model.scorer()) ^ pipeline
 
             # Führe die Such-Pipeline aus und suche nach der Suchanfrage.
             results = pipeline.search(query)
@@ -112,7 +120,7 @@ def app(index_dir) -> None:
             # Initialisiere das Modul, zum Abrufen der Texte.
             text_getter = get_text(index, metadata=["url", "title", "text"])
             # Dense retriver Model laden
-            model = pyterrier_dr.SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2')
+            model = SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2')
             pipeline = searcher >> text_getter >> model.scorer()
 
             # Führe die Such-Pipeline aus und suche nach der Suchanfrage.

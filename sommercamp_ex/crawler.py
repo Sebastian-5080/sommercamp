@@ -14,7 +14,7 @@ class SchoolSpider(Spider):
         # Gib hier mindestens eine (oder mehrere) URLs an,
         # bei denen der Crawler anfangen soll,
         # Seiten zu downloaden.
-        "https://boostedmedia.net/",
+        "https://traxion.gg/",
     ]
     link_extractor = LxmlLinkExtractor(
         # Beschränke den Crawler, nur Links zu verfolgen,
