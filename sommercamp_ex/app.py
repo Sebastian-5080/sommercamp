@@ -11,6 +11,9 @@ from pyterrier.text import get_text
 import pyterrier as pt
 import pyterrier_dr
 
+import json
+import streamlit as st
+from streamlit_lottie import st_lottie
 
 # Diese Funktion baut die App für die Suche im gegebenen Index auf.
 def app(index_dir) -> None:
@@ -33,7 +36,25 @@ def app(index_dir) -> None:
         value="",
     )
 
-    on = st.toggle("Activate AI-Mode")
+    def load_lottie(filepath):
+        with open(filepath, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    lottie_ai = load_lottie("data/animations/ai animation Flow 1.json")
+
+    with st.container():
+        on = st.toggle("Activate AI-Mode")
+        if on:
+            st.write("AI-Mode aktiviert")
+            st_lottie(
+                lottie_ai,
+                speed=1,
+                loop=True,
+                height=200,
+                key="ai_mode"
+            )
+            action = st.menu_button("Ai-Model", options=["Lite 6.4", "Pro 12.8"])
+
 
     # Wenn die Suchanfrage leer ist, dann kannst du nichts suchen.
     if query == "":
@@ -41,8 +62,6 @@ def app(index_dir) -> None:
         return
     
     elif on:
-
-
         # Öffne den Index.
         index = IndexFactory.of(abspath(index_dir))
         # Initialisiere den Such-Algorithmus
