@@ -62,6 +62,8 @@ def app(index_dir) -> None:
     # Wenn die Suchanfrage leer ist, dann kannst du nichts suchen.
     if query == "":
         markdown("Bitte gib eine Suchanfrage ein.")
+
+        print("Sucheingabe")
         return
     elif query !="":
         st_lottie(
@@ -71,9 +73,11 @@ def app(index_dir) -> None:
             height=200,
             key="ai_mode"
         )
-    elif on:
+    print("Animation")
+    if on:
         # Öffne den Index.
         index = IndexFactory.of(abspath(index_dir))
+        print("Index wird gesucht")
         # Initialisiere den Such-Algorithmus
         searcher = Retriever(
             index,
@@ -81,7 +85,7 @@ def app(index_dir) -> None:
             num_results=128,
         )
 
-        if selection == 0:
+        if selection == 2:
             # Initialisiere das Modul, zum Abrufen der Texte.
             text_getter = get_text(index, metadata=["url", "title", "text"])
             # Dense retriver Model laden
@@ -121,7 +125,7 @@ def app(index_dir) -> None:
                     # Gib Nutzern eine Schaltfläche, um die Seite zu öffnen.
                     link_button("Seite öffnen", url=row["url"])
 
-        elif selection == 1:
+        elif selection == 3:
             # Initialisiere das Modul, zum Abrufen der Texte.
             text_getter = get_text(index, metadata=["url", "title", "text"])
             # Dense retriver Model laden
@@ -160,7 +164,7 @@ def app(index_dir) -> None:
                     # Gib Nutzern eine Schaltfläche, um die Seite zu öffnen.
                     link_button("Seite öffnen", url=row["url"])
 
-    elif on is False:
+    else:
 
         # Öffne den Index.
         index = IndexFactory.of(abspath(index_dir))
