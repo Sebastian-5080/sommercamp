@@ -2,7 +2,7 @@
 from os.path import abspath, exists
 from sys import argv
 import streamlit as st
-from streamlit import (text_input, header, title, subheader, container, 
+from streamlit import (text_input, header, title, subheader, container,
                        markdown, link_button, divider, set_page_config)
 from pyterrier import IndexFactory
 from pyterrier.terrier import Retriever
@@ -33,7 +33,7 @@ def app(index_dir) -> None:
         value="",
     )
 
-    on = st.toggle("Activate AI ✨")
+    on = st.toggle("Activate AI-Mode")
 
     # Wenn die Suchanfrage leer ist, dann kannst du nichts suchen.
     if query == "":
@@ -41,6 +41,8 @@ def app(index_dir) -> None:
         return
     
     elif on:
+
+
         # Öffne den Index.
         index = IndexFactory.of(abspath(index_dir))
         # Initialisiere den Such-Algorithmus
@@ -52,8 +54,7 @@ def app(index_dir) -> None:
         # Initialisiere das Modul, zum Abrufen der Texte.
         text_getter = get_text(index, metadata=["url", "title", "text"])
         # Dense retriver Model laden
-        model = pyterrier_dr.SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2') 
-        # Baue die Such-Pipeline zusammen.
+        model = pyterrier_dr.SBertBiEncoder('sentence-transformers/all-MiniLM-L6-v2')
         pipeline = searcher >> text_getter
         pipeline = (pipeline % 5 >> model.scorer()) ^ pipeline
 
@@ -91,7 +92,7 @@ def app(index_dir) -> None:
     else:
         # Öffne den Index.
         index = IndexFactory.of(abspath(index_dir))
-        # Initialisiere den Such-Algorithmus. 
+        # Initialisiere den Such-Algorithmus.
         searcher = Retriever(
             index,
             wmodel="BM25",
