@@ -13,12 +13,6 @@ from pyterrier_dr import SBertBiEncoder
 import json
 from streamlit_lottie import st_lottie
 
-if "Label" not in st.session_state:
-    st.session_state.Label = "AI Mode: "
-
-def change_label_session_state(label: str):
-    st.session_state.Label = f"AI Mode: {label}"
-
 
 # Diese Funktion baut die App für die Suche im gegebenen Index auf.
 def app(index_dir) -> None:
@@ -49,10 +43,19 @@ def app(index_dir) -> None:
 
     with st.container():
 
+        option_map = {
+            0: ":material/Lite 6.4:",
+            1: ":material/Pro 12.8:",
+            }
+
         on = st.toggle("Activate AI-Mode")
         if on:
-            action = st.menu_button(st.session_state.Label, options=["Lite 6.4", "Pro 12.8"])
-            change_label_session_state(action)
+            selection = st.pills(
+                "AI-Model",
+                options=option_map.keys(),
+                format_func=lambda option: option_map[option]
+                selection_mode="single"
+            )
             st.write("AI-Mode aktiviert")
             st_lottie(
                 lottie_ai,
