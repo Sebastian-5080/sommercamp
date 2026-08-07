@@ -44,8 +44,8 @@ def app(index_dir) -> None:
     with st.container():
 
         option_map = {
-            0: ":material/Lite 6.4:",
-            1: ":material/Pro 12.8:",
+            2: "Lite 6.4",
+            3: "Pro 12.8",
             }
 
         on = st.toggle("Activate AI-Mode")
@@ -53,22 +53,24 @@ def app(index_dir) -> None:
             selection = st.pills(
                 "AI-Model",
                 options=option_map.keys(),
-                format_func=lambda option: option_map[option]
+                format_func=lambda option: option_map[option],
                 selection_mode="single"
             )
             st.write("AI-Mode aktiviert")
-            st_lottie(
-                lottie_ai,
-                speed=1,
-                loop=True,
-                height=200,
-                key="ai_mode"
-            )
+            
             
     # Wenn die Suchanfrage leer ist, dann kannst du nichts suchen.
     if query == "":
         markdown("Bitte gib eine Suchanfrage ein.")
         return
+    elif query !="":
+        st_lottie(
+            lottie_ai,
+            speed=1,
+            loop=True,
+            height=200,
+            key="ai_mode"
+        )
     elif on:
         # Öffne den Index.
         index = IndexFactory.of(abspath(index_dir))
@@ -79,7 +81,7 @@ def app(index_dir) -> None:
             num_results=128,
         )
 
-        if action == "Lite 6.4":
+        if selection == 0:
             # Initialisiere das Modul, zum Abrufen der Texte.
             text_getter = get_text(index, metadata=["url", "title", "text"])
             # Dense retriver Model laden
@@ -119,7 +121,7 @@ def app(index_dir) -> None:
                     # Gib Nutzern eine Schaltfläche, um die Seite zu öffnen.
                     link_button("Seite öffnen", url=row["url"])
 
-        elif action == "Pro 12.8":
+        elif selection == 1:
             # Initialisiere das Modul, zum Abrufen der Texte.
             text_getter = get_text(index, metadata=["url", "title", "text"])
             # Dense retriver Model laden
