@@ -24,8 +24,8 @@ def app(index_dir) -> None:
     )
 
     # Gib der App einen Titel und eine Kurzbeschreibung:
-    title("Sim Racing-Suchmaschine")
-    markdown("Hier kannst du unsere neue Sim Racing-Suchmaschine nutzen:")
+    title("Racing-Suchmaschine")
+    markdown("Hier kannst du unsere neue Racing-Suchmaschine nutzen:")
 
     # Erstelle ein Text-Feld, mit dem die Suchanfrage (query)
     # eingegeben werden kann.
