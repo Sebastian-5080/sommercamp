@@ -19,13 +19,13 @@ def app(index_dir) -> None:
 
     # Konfiguriere den Titel der Web-App (wird im Browser-Tab angezeigt)
     set_page_config(
-        page_title="Sim Racing-Suchmaschine",
+        page_title="News-Suchmaschine",
         layout="centered",
     )
 
     # Gib der App einen Titel und eine Kurzbeschreibung:
-    title("Racing-Suchmaschine")
-    markdown("Hier kannst du unsere neue Racing-Suchmaschine nutzen:")
+    title("News-Suchmaschine")
+    markdown("Hier kannst du unsere neue News-Suchmaschine nutzen:")
 
     # Erstelle ein Text-Feld, mit dem die Suchanfrage (query)
     # eingegeben werden kann.
