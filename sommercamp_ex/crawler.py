@@ -19,7 +19,7 @@ class SchoolSpider(Spider):
     link_extractor = LxmlLinkExtractor(
         # Beschränke den Crawler, nur Links zu verfolgen,
         # die auf eine der gelisteten Domains verweisen.
-        allow_domains=["boostedmedia.net"],
+        allow_domains=["traxion.gg"],
     )
     custom_settings = {
         # Identifiziere den Crawler gegenüber den gecrawlten Seiten.
